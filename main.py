@@ -1,7 +1,6 @@
 import requests
 from requests.exceptions import HTTPError
 
-
 swiftype_engine_search_query = "checkout"
 
 swiftype_engine_urls = {
