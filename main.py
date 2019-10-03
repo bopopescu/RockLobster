@@ -9,7 +9,7 @@ http_response = {
 	    "body": ""
 	}
 
-autoresponse_header = "Welcome to Paddle support! One of our agents will get back to you shortly. In the meantime, take a look at the following article: "
+autoresponse_header = 'Welcome to Paddle support! One of our agents will get back to you shortly. In the meantime, take a look at the following article: \n'
 
 swiftype_engine_urls = {
     "faq": "https://search-api.swiftype.com/api/v1/engines/paddle-faq/search.json",
@@ -30,7 +30,7 @@ def call_swiftype_search(url):
 def main_lookup(event, context):
     message_body = event['queryStringParameters']
     swiftype_call_params["q"] = message_body['message']
-    swiftype_response = json.loads(call_swiftype_search(swiftype_engine_urls["faq"]))
+    swiftype_response = json.loads(call_swiftype_search(swiftype_engine_urls["documentation"]))
     return_string = autoresponse_header + swiftype_response["records"]["page"][0]["title"] + " " + swiftype_response["records"]["page"][0]["url"]
     http_response["body"] = return_string
     print(http_response)
