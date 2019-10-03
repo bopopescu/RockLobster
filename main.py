@@ -18,8 +18,15 @@ swiftype_call_params = {
     "q": swiftype_engine_search_query
 }
 
+
+def get_message_from_kustomer_call(event, context):
+    # body = event['queryStringParameters']
+    swiftype_call_params["q"] = body['message']
+
+
+
 def call_swiftype_search(url):
     response = requests.get(url, swiftype_call_params)
     return response.content
 
-print(call_swiftype_search(swiftype_engine_urls["faq"]))
+print(call_swiftype_search("https://search-api.swiftype.com/api/v1/engines/paddle-faq/search.json"))
